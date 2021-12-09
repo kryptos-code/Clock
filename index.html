@@ -15,11 +15,17 @@
         let date;
         let time;
         let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+        frmt = (n)=>{
+            return n<10 ? '0'+n.toString() : n.toString();
+        }
+
         setInterval(() => {
             obj = new Date();
-            time = obj.getHours() + ':' + obj.getMinutes() + ':' + obj.getSeconds();
+            time = `${frmt(obj.getHours())}:${frmt(obj.getMinutes())}:${frmt(obj.getSeconds())}`;
+            // time = obj.getHours()+':'+obj.getMinutes()+':'+obj.getSeconds();
             date = obj.toLocaleDateString(undefined, options);
-            document.getElementById('time').innerHTML= '<br><b>'+time+'<br>on '+date+'</b>';
+            document.getElementById('time').innerHTML= '<br><b class="fs-1">'+time+'<br>on '+date+'</b>';
         }, 1000);
     </script>
     <title>Clock | Timenasium</title>
